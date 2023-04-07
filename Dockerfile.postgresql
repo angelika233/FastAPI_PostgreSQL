@@ -5,3 +5,7 @@ ENV POSTGRES_USER=admin \
     POSTGRES_DB=fastapi_db
 
 COPY init.sql /docker-entrypoint-initdb.d/
+
+HEALTHCHECK CMD pg_isready -U $POSTGRES_USER
+
+EXPOSE 5432
